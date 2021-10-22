@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FormationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FormationController::class, 'index'])->name('formation-list');
+Route::get('/formations/{id}', [FormationController::class, 'detail'])->name('formation-detail');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
