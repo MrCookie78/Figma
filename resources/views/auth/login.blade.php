@@ -1,4 +1,47 @@
-<x-guest-layout>
+@extends('layouts.layout')
+
+@section('title')
+    Login
+@endsection
+
+@section('content')
+    @include('layouts.navigation', ['currentPage' => 'login'])
+
+    <div class="container-sm">
+        <h1>Formulaire de connexion</h1>
+
+        @if ($errors->any())
+            <ul class="list-group mt-3">
+                @foreach ($errors->all() as $error)
+                    <li class="list-group-item list-group-item-danger">{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+
+        <form action="{{ route('login') }}" method="post">
+            @csrf
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email" required/>
+            </div>
+            <div class="form-group">
+                <label>Mot de passe</label>
+                <input type="password" class="form-control" name="password" required/>
+            </div>
+            <button type="submit" class="btn btn-primary">Se Connecter</button>
+        </form>
+    </div>
+@endsection
+
+
+
+
+
+
+
+
+{{-- <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -53,4 +96,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-guest-layout> --}}

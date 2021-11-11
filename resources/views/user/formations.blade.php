@@ -8,7 +8,7 @@
     @include('layouts.navigation', ['currentPage' => 'Formations'])
 
     <div class="container-sm">
-        <h1>Liste des formations</h1>
+        <h1>La liste des formations</h1>
 
         {{-- @if (\Illuminate\Support\Facades\Auth::check()) --}}
             <a class="btn btn-primary mt-3" href="{{ route('formation-add') }}" role="button">Ajouter</a>

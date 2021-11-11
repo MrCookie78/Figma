@@ -6,32 +6,40 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
 
-             <li class="nav-item">
-                <a class="nav-link {{ $currentPage === "Formations" ? "active" : "" }}" href="">Formations</a>
-            </li>
-            {{--
             <li class="nav-item">
-                <a class="nav-link {{ $currentPage === "categories" ? "active" : "" }}" href="{{ route("categories-list") }}">Catégories</a>
+                <a class="nav-link {{ $currentPage === "Formations" ? "active" : "" }}" href="{{ route('formation-list') }}">Formations</a>
             </li>
-            @if (\Illuminate\Support\Facades\Auth::check())
-                <li class="nav-item nav-link">{{ \Illuminate\Support\Facades\Auth::user()->firstname }}</li>
+
+            @auth
+                <li class="nav-item">
+                    <a class="nav-link {{ $currentPage === "profil" ? "active" : "" }}" href="{{ route('profil') }}">{{ \Illuminate\Support\Facades\Auth::user()->firstname }}</a>
+                </li>
+
+                @if (\Illuminate\Support\Facades\Auth::user()->isAdmin)
+                    <li class="nav-item">
+                        <a class="nav-link {{ $currentPage === "Demandes" ? "active" : "" }}" href="{{ route('demande-list') }}">Demandes</a>
+                    </li>
+                @else
+
+                @endif
+
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="btn btn-danger">Déconnexion</button>
                     </form>
                 </li>
-            @else
+
+            @endauth
+
+            @guest
                 <li class="nav-item">
                     <a class="nav-link {{ $currentPage === "login" ? "active" : "" }}" href="{{ route('login') }}">Connexion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ $currentPage === "register" ? "active" : "" }}" href="{{ route('register') }}">Inscription</a>
                 </li>
-            @endif
-            <li class="nav-item">
-                <a class="nav-link {{ $currentPage === "contacts" ? "active" : "" }}" href="{{ route('contact') }}">Contact</a>
-            </li> --}}
+            @endguest
         </ul>
     </div>
 </nav>

@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
             'isAdmin' => 0,
-            'image' => $this->faker->imageUrl(640, 480, null, true, null, false),
+            'image' => "NbbiegHPIMxwk2CpIRNO0tgahaou1FjmP3xhhchl.jpg", //$this->faker->imageUrl(640, 480, null, true, null, false),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             CategorieSeeder::class,
             TypeSeeder::class,
             FormationCategorieSeeder::class,
-            FormationTypeSeeder::class
+            FormationTypeSeeder::class,
+            InscriptionDemandeSeeder::class
         ]);
     }
 }
