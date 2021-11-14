@@ -24,7 +24,7 @@ class FormationFactory extends Factory
         return [
             'titre' => $this->faker->name(),
             'description' => $this->faker->sentence(100),
-            'image' => "3AvWdINXG9aOIyRF5J4KBw67Xo7OsrQuZBD9O7xe.jpg", //$this->faker->imageUrl(640, 480, null, true, null, false),
+            'image' => $this->faker->imageUrl(640, 480, null, true, null, false),
             'prix' => $this->faker->randomDigit(),
             'user_id' => 1
         ];

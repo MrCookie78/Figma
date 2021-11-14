@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'firstname' => 'admin',
             'lastname' => 'admin',
-            'image' => "NbbiegHPIMxwk2CpIRNO0tgahaou1FjmP3xhhchl.jpg",
+            'image' => "https://via.placeholder.com/640x480.png/00dd22?text=amet",
             'isAdmin' => 1,
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),

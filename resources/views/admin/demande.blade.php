@@ -25,16 +25,23 @@
                             <p>{{ $demande->email }}</p>
                         </div>
                         <div class="card-footer w-100">
-                            <form class="mt-3" method="POST" action="{{ route('demande-add') }}">
-                                @csrf
+                            <div class="d-flex">
+                                <form class="mt-3" method="POST" action="{{ route('demande-add') }}">
+                                    @csrf
 
-                                <input type="hidden" name="id" value="{{ $demande->id }}" />
-                                <input type="hidden" name="lastname" value="{{ $demande->lastname }}" />
-                                <input type="hidden" name="firstname" value="{{ $demande->firstname }}" />
-                                <input type="hidden" name="email" value="{{ $demande->email }}" />
+                                    <input type="hidden" name="id" value="{{ $demande->id }}" />
+                                    <input type="hidden" name="lastname" value="{{ $demande->lastname }}" />
+                                    <input type="hidden" name="firstname" value="{{ $demande->firstname }}" />
+                                    <input type="hidden" name="email" value="{{ $demande->email }}" />
 
-                                <button type="submit" class="btn btn-primary mt-3">Accepter</button>
-                            </form>
+                                    <button type="submit" class="btn btn-primary mt-3">Accepter</button>
+                                </form>
+                                <form class="mt-3 ms-3" method="POST" action="{{ route('demande-delete', $demande->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mt-3">Supprimer</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -47,7 +54,7 @@
         {{ $demandes->links() }}
     </div>
 @else
-    <p>Il n'y a aucun article.</p>
+    <p>Il n'y a aucune demande en attente.</p>
 @endif
 </div>
 @endsection

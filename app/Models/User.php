@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->isAdmin;
     }
+
+    public function formation()
+    {
+        return $this->hasMany(Formation::class)->orderBy('id', 'DESC');
+    }
 }

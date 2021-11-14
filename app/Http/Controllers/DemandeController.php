@@ -31,7 +31,6 @@ class DemandeController extends Controller
 
     public function addUser(Request $request)
     {
-        dd(now());
         $params = $request->all();
 
         $password = Str::random(8);
@@ -52,5 +51,12 @@ class DemandeController extends Controller
             ->send(new demandeAccepteMail($params));
 
         return redirect()->back();
+    }
+
+    public function delete($id)
+    {
+        $demande = InscriptionDemande::find($id);
+        $demande->delete();
+        return back();
     }
 }

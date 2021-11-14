@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 20px;">
-    <a class="navbar-brand" style="padding-left: 20px;" href="#">Figma</a>
+    <a class="navbar-brand" style="padding-left: 20px;" href="{{ route('formation-list') }}">Figma</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,18 +12,31 @@
 
             @auth
                 <li class="nav-item">
-                    <a class="nav-link {{ $currentPage === "profil" ? "active" : "" }}" href="{{ route('profil') }}">{{ \Illuminate\Support\Facades\Auth::user()->firstname }}</a>
+                    <a class="nav-link {{ $currentPage === "Profil" ? "active" : "" }}" href="{{ route('profil', \Illuminate\Support\Facades\Auth::user()->id) }}">{{\Illuminate\Support\Facades\Auth::user()->firstname}}</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ $currentPage === "User_Formations" ? "active" : "" }}" href="{{ route('user-formation-list') }}">Mes formations</a>
                 </li>
 
                 @if (\Illuminate\Support\Facades\Auth::user()->isAdmin)
                     <li class="nav-item">
+                        <a class="nav-link {{ $currentPage === "Utilisateurs" ? "active" : "" }}" href="{{ route('users-list') }}">Utilisateurs</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ $currentPage === "Demandes" ? "active" : "" }}" href="{{ route('demande-list') }}">Demandes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ $currentPage === "categorie" ? "active" : "" }}" href="{{ route('categories-list') }}">Catégories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ $currentPage === "type" ? "active" : "" }}" href="{{ route('types-list') }}">Types</a>
                     </li>
                 @else
 
                 @endif
 
-                <li class="nav-item">
+                <li class="nav-item ms-3">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="btn btn-danger">Déconnexion</button>

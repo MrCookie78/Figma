@@ -15,7 +15,6 @@ class FormationController extends Controller
 {
     public function index()
     {
-        // dd(\Illuminate\Support\Facades\Auth::user());
         $formations = Formation::orderBy('id', 'DESC')->paginate(9);
         return view('formations.list', compact('formations'));
     }
@@ -43,16 +42,15 @@ class FormationController extends Controller
         // On enlève le "public/" de "public/<nom_fichier>.<extension>"
         $parameters['image'] = substr($file, 7);
 
-        // $parameters['user_id'] = auth()->user()->id;
-        $parameters['user_id'] = 1;
+        $parameters['user_id'] = auth()->user()->id;;
         $formation = Formation::create($parameters);
         if (!empty($parameters['checkboxCategories'])) {
             $formation->categories()->attach($parameters['checkboxCategories']);
         }
         if (!empty($parameters['checkboxCategories'])) {
-            $formation->categories()->attach($parameters['checkboxCategories']);
+            $formation->types()->attach($parameters['checkboxCategories']);
         }
-        return redirect()->route('formation-list');
+        return redirect()->route('user-formation-list');
     }
 
     public function update($id, FormationUpdateRequest $request)
