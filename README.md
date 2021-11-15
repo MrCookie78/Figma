@@ -40,6 +40,10 @@ Pour initialiser votre projet, vous devez vous placer dans le repertoire du proj
 composer install
 ```
 
+Pour que la gestion des images fonctionne, il faut créer un lien symbolique entre le dossier de storage et le dossier publique :
+```
+php artisan storage:link
+```
 Vous pouvez enfin créer les tables de la base de données et les remplir avec les commandes suivantes:
 ```
 php artisan migrate
